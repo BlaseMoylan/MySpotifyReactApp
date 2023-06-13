@@ -1,0 +1,7 @@
+.page-container{
+    width: calc(100% - 100px);
+    height: 100%;
+    background-image: linear-gradient(to right, #13172D, #002E73);
+    /* background-image: linear-gradient(to right, #13172D, #280073); */
+    
+}
