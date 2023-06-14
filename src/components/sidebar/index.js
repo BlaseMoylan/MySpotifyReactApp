@@ -6,7 +6,9 @@ import { FaGripfire, FaPlay } from "react-icons/fa"
 import { FaSignOutAlt } from "react-icons/fa"
 import { IoLibrary } from "react-icons/io5"
 import { MdSpaceDashboard } from "react-icons/md"
+
 export default function Sidebar(){
+    
     return(
         <div className='sidebar-container'>
             <img src='https://i.pinimg.com/originals/c8/eb/25/c8eb256d440f54a163c7662c21137fb4.jpg' 
