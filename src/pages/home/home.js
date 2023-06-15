@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { BrowserRouter as Router, Routes, Route} from 'react-router-dom'
 // import (BrowserRouter)
 import Library from '../library/library'
@@ -8,11 +8,14 @@ import Feed from '../feed/feed'
 import Favorites from '../favorites/favorites'
 import './home.css'
 import Sidebar from '../../components/sidebar'
+import Login from '../auth/login'
 export default function Home() {
+    const [token,useToken]=useState("")
     return (
         <Router>
             <div className='main-body'>
-                <Sidebar />
+                <Login />
+                {/* <Sidebar />
                 <Routes>
                     <Route path="/library" element={<Library/>} />
                     <Route path="/player" element={<Player/>} />
@@ -20,7 +23,7 @@ export default function Home() {
                     <Route path="/favorites" element={<Favorites/>} />
                     <Route path="/trending" element={<Trending/>} />
                     
-                </Routes>
+                </Routes> */}
             </div>
         </Router>
     )
