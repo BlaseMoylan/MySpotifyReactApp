@@ -2,28 +2,28 @@ a {
     text-decoration:none !important ;
 }
 .btn-body{
-    height: 125px;
-    width: 125px;
-    border-radius: 20px;
+    height: 13%;
+    width: 10%;
+    border-radius: 5%;
     color:rgb(155, 155, 155);
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: column;
     transition: all 0.3s ease;
-    background-image: linear-gradient(to right, #13172d00, #002e7300);
+    /* background-image: linear-gradient(to right, #13172d00, #002e7300); */
 }
 
 .btn-body.active{
     /* background-image: linear-gradient(to right, #13172D, #002E73); */
-    background-image: linear-gradient(to right, #13172d7e, #002e7360);
+    /* background-image: linear-gradient(to right, #13172d7e, #002e7360); */
     /* background-color: blueviolet; */
     color:aliceblue;
     transform: scale(1.05);
 }
 
 .btn-body{
-    margin: 40px auto;
+    margin: 15% auto;
     font-weight: bold;
 }
 

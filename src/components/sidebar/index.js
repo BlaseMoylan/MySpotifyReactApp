@@ -27,8 +27,10 @@ export default function Sidebar(){
                 <SidebarButton title="Player" to="/player" icon={<FaPlay/>}/>
                 <SidebarButton title="Favorites" to="/favorites" icon={<MdFavorite/>}/>
                 <SidebarButton title="Library" to="/library" icon={<IoLibrary/>}/>
+                <SidebarButton title="Sign Out" to="" icon={<FaSignOutAlt/>}/>
             </div>
-            <SidebarButton title="Sign Out" to="" icon={<FaSignOutAlt/>}/>
+            <div></div>
+            
         </div>
     )
 }
