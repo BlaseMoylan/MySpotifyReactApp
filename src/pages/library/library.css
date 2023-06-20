@@ -19,8 +19,14 @@
     padding: .5%;
     margin: 5%;
     color: aliceblue;
+    transition: all 0.2s ease;
     
-    
+}
+.playlist-card:hover{
+    transform: scale(1.02);
+}
+.playlist-card:hover .playlist-button{
+    opacity: 1;
 }
 .playlist-image{
     width: 100%;
@@ -29,4 +35,25 @@
 .playlist-image-non{
     width: 100%;
     border-radius: 20px;
+}
+.playlist-name{
+    font-weight: 400;
+    font-size: 20px;
+    color: 10px 0px 0px;
+}
+
+.playButton{
+    position: absolute;
+    width: 84%;
+    height: 34%;
+    border-radius: 20px;
+    background: linear-gradient(
+    180deg,
+    rgba(54, 69, 98, 0) 10%,
+    rgb(0, 0, 0) 100%
+    );
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-end;
+    
 }
