@@ -12,41 +12,54 @@
 .playlist-card{
     position: relative;
     width: 15%;
-    height: 30%;
-    border-radius: 20px;
+    height: 34%;
+    border-radius: 10px;
     background-color: transparent;
     /* border: 1px solid white; */
     padding: .5%;
-    margin: 5%;
+    margin: 1%;
     color: aliceblue;
     transition: all 0.2s ease;
+    cursor: pointer;
     
 }
 .playlist-card:hover{
     transform: scale(1.02);
 }
-.playlist-card:hover .playlist-button{
-    opacity: 1;
+.playlist-card:hover .playButton{
+    opacity: 0.5;
 }
 .playlist-image{
     width: 100%;
+    aspect-ratio: 1;
     border-radius: 20px;
 }
 .playlist-image-non{
     width: 100%;
+    aspect-ratio: 1;
     border-radius: 20px;
 }
 .playlist-name{
-    font-weight: 400;
+    font-weight: 200;
     font-size: 20px;
     color: 10px 0px 0px;
+    display: -webkit-box;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    -webkit-line-clamp: 2;
+    line-clamp: 2;
+    -webkit-box-orient: vertical;
 }
 
 .playButton{
     position: absolute;
-    width: 84%;
+    right: 0;
+    bottom: 0;
+    opacity: 0;
+    width: 100%;
     height: 34%;
     border-radius: 20px;
+    
     background: linear-gradient(
     180deg,
     rgba(54, 69, 98, 0) 10%,
@@ -55,5 +68,6 @@
     display: flex;
     align-items: flex-end;
     justify-content: flex-end;
-    
+    padding: 1%;
+    transition: 0.5s ease;
 }
