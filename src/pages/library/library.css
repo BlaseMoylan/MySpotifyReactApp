@@ -1,3 +1,6 @@
+.library-main div::-webkit-scrollbar{
+    display:none;
+}
 .library-body{
     width: 90%;
     height: 90%;

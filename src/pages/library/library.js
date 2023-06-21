@@ -21,7 +21,7 @@ export default function Library(){
     }
     
     return(
-        <div className='page-container'>
+        <div className='page-container library-main'>
             <div className='library-body'>
                 {playlist?.map((playlist)=>(
                     <div className='playlist-card' key={playlist.id} onClick={()=> playPlaylist(playlist.id)}>
