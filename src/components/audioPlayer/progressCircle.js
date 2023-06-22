@@ -24,12 +24,23 @@ const Circle=({color,percentage,size,strokeWidth})=>{
 export default function ProgressCircle({percentage,isPlaying,image,size,color}){
 
     return (
-        <div className="progressCircle">
+        <div className="progress-circle container">
             <svg width={size} height={size}>
                 <g>
                     <Circle strokeWidth={"0.4rem"} color="rgba(240, 248, 255, 0.661)" size={size}/>
                     <Circle strokeWidth={"0.6rem"} color={color} percentage={percentage} size={size}/>
                 </g>
+                <defs>
+                    <clipPath id="myCircle">
+                        <circle cx="50%" cy="50%" r={(size/2)-25} fill="#ffffff"/>
+                    </clipPath>
+                    <clipPath id="myInnerCircle">
+                        <circle cx="50%" cy="50%" r={(size/2)-100} fill="#ffffff"/>
+                    </clipPath>
+                </defs>
+                <image className={isPlaying?"active":""} x={0} y={0} width={2*((size/2))} height={2*((size/2))} href={image} clipPath="url(#myCircle)"/>
+                {/* <image className={isPlaying?"active":""} x={100} y={100} width={2*((size/2)-100)}  href={image} clipPath="url(#myInnerCircle)"/> */}
+
             </svg>
 
         </div>

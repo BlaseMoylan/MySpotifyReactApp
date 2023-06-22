@@ -3,3 +3,11 @@ circle{
     transform: rotate(93deg);
     transform-origin:50% 50% ;
 }
+/* image.active{
+    animation: ;
+} */
+.progress-circle{
+    justify-content: center;
+    align-items: center;
+}
+/* https://th.bing.com/th/id/R.0b74167be7611d2f2aaeeca17bab4883?rik=lrjKsfRPB%2byq4g&riu=http%3a%2f%2fpngimg.com%2fuploads%2fcompact_disc%2fcompact_disc_PNG8744.png&ehk=81MbZ5%2fGa8mpqEwV2XPuM3o5c3IZ0MdMnePPNMbljr8%3d&risl=&pid=ImgRaw&r=0 */
