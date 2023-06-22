@@ -30,7 +30,7 @@ export default function Player(){
     return(
         <div className='container' >
             <div className='left-player-body'>
-                <AudioPlayer />
+                <AudioPlayer currentTrack={currentTrack} />
             </div>
             <div className='right-player-body'>
                 <SongCard album={currentTrack?.album}/>
