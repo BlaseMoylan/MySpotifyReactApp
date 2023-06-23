@@ -1,6 +1,8 @@
 import React from "react";
 import "./audioplayer.css"
 import ProgressCircle from "./progressCircle";
+import Controls from "./controls";
+import WaveAnimation from "./waveAnimation";
 
 export default function AudioPlayer({currentTrack}){
     const artists=[];
@@ -18,15 +20,17 @@ export default function AudioPlayer({currentTrack}){
                 color="rgba(240, 248, 255, 0.661)"   
                 />         
             </div>
-            <div className="player-rightbody">
+            <div className="player-rightbody container">
+                <div className="player-head container">
                 <p className="song-title">
                     {currentTrack?.name}
                 </p>
                 <p className="song-artist">
                     {artists?.join(" | ")}
                 </p>
-                <div className="player-right-bottom">
-                    <div className="song-duration">
+                </div>
+                <div className="player-right-bottom container">
+                    <div className="song-duration container">
                         <p className="duration">0.01</p>
                         <WaveAnimation />
                         <p className="duration">0.30</p>
