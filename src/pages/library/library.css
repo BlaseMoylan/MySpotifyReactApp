@@ -65,8 +65,8 @@
     
     background: linear-gradient(
     180deg,
-    rgba(54, 69, 98, 0) 10%,
-    rgb(0, 0, 0) 100%
+    rgba(0, 0, 0, 0) 10%,
+    rgba(255, 255, 255, 0.127) 100%
     );
     display: flex;
     align-items: flex-end;

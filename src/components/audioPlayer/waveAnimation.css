@@ -10,7 +10,7 @@
     transform: scale(.4);
     height: 100%;
     width: var(--boxSize);
-    background-color:aliceblue;
+    background-color:rgb(247, 252, 247);
     border-radius: 18px;
 }
 
@@ -71,6 +71,6 @@
         transform: scale(.4);
     }
     75%{
-        transform: scale(1.2);
+        transform: scale(1);
     }    
 }
