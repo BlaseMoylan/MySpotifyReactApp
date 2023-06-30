@@ -1,8 +1,9 @@
 import React from "react";
 import "./controls.css"
+import {FaPause} from "react-icons/fa"
 import { IconContext } from "react-icons";
 import {IoPlaySkipBack,IoPlaySkipForward,IoPlay} from "react-icons/io5"
-    import { formToJSON } from "axios";
+import { formToJSON } from "axios";
 
 export default function Controls({isPlaying,setIsPlaying,handleNext,handlePrev}){
     return(
@@ -11,8 +12,8 @@ export default function Controls({isPlaying,setIsPlaying,handleNext,handlePrev})
                 <div className="action-btn" onClick={handlePrev}>
                     <IoPlaySkipBack />
                 </div>
-                <div className="play-pause-btn container" onClick={()=>setIsPlaying(!isPlaying)}>
-                    <IoPlay />
+                <div className={isPlaying ? "play-pause-btn container active" : "play-pause-btn container"} onClick={()=>setIsPlaying(!isPlaying)}>
+                    {isPlaying ?<FaPause/> :<IoPlay />}
                 </div>
                 <div className="action-btn container" onClick={handleNext}>
                     <IoPlaySkipForward />
