@@ -15,8 +15,7 @@ a {
 }
 
 .btn-body.active{
-    /* background-image: linear-gradient(to right, #13172D, #002E73); */
-    /* background-image: linear-gradient(to right, #13172d7e, #002e7360); */
+    
     /* background-color: blueviolet; */
     color:aliceblue;
     transform: scale(1.05);
