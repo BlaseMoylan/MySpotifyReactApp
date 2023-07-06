@@ -7,11 +7,19 @@ import Queue from '../../components/queue/queue'
 import AudioPlayer from '../../components/audioPlayer/audioplayer'
 import Widgets from '../../components/widgets/widgets'
 
+/**
+ * Player component displays the audio player, song card, and queue.
+ */
+
 export default function Player(){
     const location = useLocation()
     const [tracks,setTracks]=useState([])
     const [currentTrack,setCurrentTrack]=useState({})
     const [currentIndex,setCurrentIndex]=useState(0)
+
+/**
+   * Fetches the playlist tracks when the component mounts or when location state changes.
+   */
 
     useEffect(()=>{
         if(location.state){
@@ -25,6 +33,11 @@ export default function Player(){
                 })
         }
     },[location.state])
+
+/**
+   * Updates the current track when currentIndex or tracks change.
+   */
+
     useEffect(()=>{
         setCurrentTrack(tracks[currentIndex]?.track);
     },[currentIndex, tracks])
