@@ -1,3 +1,6 @@
+// I want to move this componet or split it up into different parts so that it instead displays on trending and feed
+
+
 import React from "react";
 import "./widgetCard.css"
 import WidgetEntry from "./widgetEntry";
@@ -7,6 +10,7 @@ export default function WidgetCard({title,similar,featured,newRelease}){
     <div className="w-card-body">
         <p className="widget-title">{title}</p>
         {
+            // I also want to make each of the different recomended playlist clickable and playable
             similar?similar.map(artist=>(
                 <WidgetEntry 
                     title={artist?.name} 
@@ -26,6 +30,7 @@ export default function WidgetCard({title,similar,featured,newRelease}){
                     image={album?.images[2]?.url}
                 />
             )): null
+            // add in play effect later make it so that you can actualy play the playlist 
         }
     </div>
     )
