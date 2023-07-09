@@ -10,14 +10,14 @@ export default function WidgetCard({title,similar,featured,newRelease}){
             similar?similar.map(artist=>(
                 <WidgetEntry 
                     title={artist?.name} 
-                    subtitle={artist?.followers?.total} 
+                    subtitle={artist?.followers?.total + " Followers"} 
                     image={artist?.images[2]?.url}
                 />
             )):featured?featured.map(playlist=>(
                 <WidgetEntry 
                     title={playlist?.name} 
-                    subtitle={playlist?.tracks?.total} 
-                    image={playlist?.images[2]?.url}
+                    subtitle={playlist?.tracks?.total + " Songs"} 
+                    image={playlist?.images[0]?.url}
                 />
             )):newRelease?newRelease.map(album=>(
                 <WidgetEntry 
