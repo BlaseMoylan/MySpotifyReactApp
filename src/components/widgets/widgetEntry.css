@@ -1,7 +1,7 @@
 .entry-body{
     width:100%;
     align-items: center;
-    margin-top: 10%;
+    margin-top: 15%;
 }
 .entry-image{
     height: 50px;
@@ -18,13 +18,13 @@
 .entry-title{
     font-weight: 700;
     font-size: 16px;
-    color: aliceblue;
+    color: rgb(231, 240, 248);
     margin:0px 0px 5px;
 }
 
-.enter-subtitle{
+.entry-subtitle{
     font-weight:400;
-    font-size:12px;
-    color:rgba(240, 248, 255, 0.247);
-    margin: 0;
+    font-size:14px;
+    color:rgba(238, 242, 253, 0.569);
+    margin: 1px;
 }
