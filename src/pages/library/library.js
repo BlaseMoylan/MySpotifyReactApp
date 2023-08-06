@@ -12,6 +12,7 @@ import { useNavigate } from 'react-router-dom';
  */
 export default function Library() {
   const [playlist, setPlaylist] = useState(null);
+  const [favorites, setFavorites] = useState(null)
   const navigate = useNavigate();
 
   /**
@@ -20,9 +21,40 @@ export default function Library() {
   useEffect(() => {
     APIKit.get('me/playlists').then(function (response) {
       setPlaylist(response.data.items);
+      console.log("ladladlhgoaehoghadlh")
       console.log(response.data.items);
     });
-  }, []);
+    // need to get all tracks by following 'next' given url
+    APIKit.get('me/tracks').then(function (response){
+      setFavorites(response.data)
+      console.log("test 321")
+      console.log(response.data)
+      
+    })
+    // this is the code snip it given by chat gpt need to figure out how to get it Integrated
+
+    
+    // def get_all_favorite_tracks(access_token):
+    // headers = {
+    //     "Authorization": f"Bearer {access_token}"
+    // }
+    // all_favorite_tracks = []
+
+    // next_url = "https://api.spotify.com/v1/me/tracks"
+    // while next_url:
+    //     response = requests.get(next_url, headers=headers)
+    //     if response.status_code == 200:
+    //         data = response.json()
+    //         all_favorite_tracks.extend(data["items"])
+    //         next_url = data["next"]  # Get the URL for the next page of results
+    //     else:
+    //         print("Error:", response.status_code)
+    //         return None
+
+    // return all_favorite_tracks
+
+
+  }, [])
 
   /**
    * Handles the click event on a playlist card and navigates to the player page.
