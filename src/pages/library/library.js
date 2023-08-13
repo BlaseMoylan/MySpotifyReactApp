@@ -18,65 +18,122 @@ export default function Library() {
   /**
    * Fetches user playlists from the API.
    */
-  useEffect(() => {
-    APIKit.get('me/playlists').then(function (response) {
-      setPlaylist(response.data.items);
-      console.log("ladladlhgoaehoghadlh")
-      console.log(response.data.items);
-    });
-    // need to get all tracks by following 'next' given url
-    // APIKit.get('me/tracks').then(function (response){
-    //   setFavorites(response.data)
-    //   console.log("test 321")
-    //   console.log(response.data)
-      
-    // })
 
-    setFavorites(getAllFavoriteTracks())
-    // this is the code snip it given by chat gpt need to figure out how to get it Integrated
-
+  // async function getAllFavoriteTracks(){
     
-    // def get_all_favorite_tracks(access_token):
-    // headers = {
-    //     "Authorization": f"Bearer {access_token}"
-    // }
-    // all_favorite_tracks = []
+  //   let allFavoriteTracks = []
+  //   let nextUrl = "https://api.spotify.com/v1/me/tracks"
+  //   while (nextUrl){
+  //       let response = await APIKit.get(nextUrl)
+  //       if (response.status_code == 200){
+  //           // not sure if this is the right function call for javaScript
+  //         allFavoriteTracks.push(...response.data.items) 
+  //           nextUrl = response["next"]
+  //       }
+  //       else{
+  //           console.log("Error:", response.status_code)
+  //           return []
+  //       }
+  //   }
+  //   console.log("testing***")
+  //   console.log(allFavoriteTracks)
+  //   return allFavoriteTracks
+  // }
+  async function getAllFavoriteTracks() {
+    let allFavoriteTracks = [];
+    let nextUrl = "https://api.spotify.com/v1/me/tracks";
 
-    // next_url = "https://api.spotify.com/v1/me/tracks"
-    // while next_url:
-    //     response = requests.get(next_url, headers=headers)
-    //     if response.status_code == 200:
-    //         data = response.json()
-    //         all_favorite_tracks.extend(data["items"])
-    //         next_url = data["next"]  # Get the URL for the next page of results
-    //     else:
-    //         print("Error:", response.status_code)
-    //         return None
-
-    // return all_favorite_tracks
-
-
-  }, [])
-
-  function getAllFavoriteTracks(){
-    
-    let allFavoriteTracks = []
-    let nextUrl = "https://api.spotify.com/v1/me/tracks"
-    while (nextUrl){
-        response = APIKit.get(nextUrl)
-        if (response.status_code == 200){
-            // not sure if this is the right function call for javaScript
-          allFavoriteTracks.extend(response["items"]) 
-            nextUrl = data["next"]
-        }
-        else{
-            print("Error:", response.status_code)
-            return None
-        }
+    while (nextUrl) {
+      const response = await APIKit.get(nextUrl); // Use await to wait for the response
+      if (response.status === 200) {
+        allFavoriteTracks.push(...response.data.items); // Use push to append items
+        nextUrl = response.data.next;
+      } else {
+        console.log("Error:", response.status);
+        return [];
+      }
     }
 
-    return allFavoriteTracks
+    console.log("All favorite tracks:", allFavoriteTracks);
+    return allFavoriteTracks;
   }
+
+  useEffect(() => {
+    async function fetchData() {
+      try {
+        const response = await APIKit.get('me/playlists');
+        setPlaylist(response.data.items);
+
+        const favoriteTracks = await getAllFavoriteTracks();
+        setFavorites(favoriteTracks);
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      }
+    }
+
+    fetchData();
+  }, []);
+  // useEffect(() => {
+  //   APIKit.get('me/playlists').then(function (response) {
+  //     setPlaylist(response.data.items);
+  //     console.log("ladladlhgoaehoghadlh")
+  //     console.log(response.data.items);
+  //   });
+  //   // need to get all tracks by following 'next' given url
+  //   // APIKit.get('me/tracks').then(function (response){
+  //   //   setFavorites(response.data)
+  //   //   console.log("test 321")
+  //   //   console.log(response.data)
+      
+  //   // })
+  //   console.log("right here")
+  //   const favoriteTracks = await getAllFavoriteTracks();
+  //       setFavorites(favoriteTracks);
+  //   // this is the code snip it given by chat gpt need to figure out how to get it Integrated
+
+    
+  //   // def get_all_favorite_tracks(access_token):
+  //   // headers = {
+  //   //     "Authorization": f"Bearer {access_token}"
+  //   // }
+  //   // all_favorite_tracks = []
+
+  //   // next_url = "https://api.spotify.com/v1/me/tracks"
+  //   // while next_url:
+  //   //     response = requests.get(next_url, headers=headers)
+  //   //     if response.status_code == 200:
+  //   //         data = response.json()
+  //   //         all_favorite_tracks.extend(data["items"])
+  //   //         next_url = data["next"]  # Get the URL for the next page of results
+  //   //     else:
+  //   //         print("Error:", response.status_code)
+  //   //         return None
+
+  //   // return all_favorite_tracks
+
+
+  // }, [])
+
+  // function getAllFavoriteTracks(){
+    
+  //   let allFavoriteTracks = []
+  //   let nextUrl = "https://api.spotify.com/v1/me/tracks"
+  //   while (nextUrl){
+  //       let response = APIKit.get(nextUrl)
+  //       if (response.status_code == 200){
+  //           // not sure if this is the right function call for javaScript
+  //         allFavoriteTracks.append(response["items"]) 
+  //           nextUrl = response["next"]
+  //       }
+  //       else{
+  //           console.log("Error:", response.status_code)
+  //           return []
+  //       }
+  //   }
+  //   console.log("testing***")
+  //   console.log(allFavoriteTracks)
+  //   return allFavoriteTracks
+  // }
   
   /**
    * Handles the click event on a playlist card and navigates to the player page.
