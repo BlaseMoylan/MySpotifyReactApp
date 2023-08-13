@@ -16,37 +16,18 @@ export default function Library() {
   const navigate = useNavigate();
 
   /**
-   * Fetches user playlists from the API.
+   * Fetches user favorites from the API.
    */
 
-  // async function getAllFavoriteTracks(){
-    
-  //   let allFavoriteTracks = []
-  //   let nextUrl = "https://api.spotify.com/v1/me/tracks"
-  //   while (nextUrl){
-  //       let response = await APIKit.get(nextUrl)
-  //       if (response.status_code == 200){
-  //           // not sure if this is the right function call for javaScript
-  //         allFavoriteTracks.push(...response.data.items) 
-  //           nextUrl = response["next"]
-  //       }
-  //       else{
-  //           console.log("Error:", response.status_code)
-  //           return []
-  //       }
-  //   }
-  //   console.log("testing***")
-  //   console.log(allFavoriteTracks)
-  //   return allFavoriteTracks
-  // }
+  
   async function getAllFavoriteTracks() {
     let allFavoriteTracks = [];
     let nextUrl = "https://api.spotify.com/v1/me/tracks";
 
     while (nextUrl) {
-      const response = await APIKit.get(nextUrl); // Use await to wait for the response
+      const response = await APIKit.get(nextUrl);
       if (response.status === 200) {
-        allFavoriteTracks.push(...response.data.items); // Use push to append items
+        allFavoriteTracks.push(...response.data.items);
         nextUrl = response.data.next;
       } else {
         console.log("Error:", response.status);
@@ -57,6 +38,10 @@ export default function Library() {
     console.log("All favorite tracks:", allFavoriteTracks);
     return allFavoriteTracks;
   }
+
+  /**
+   * Fetches user playlists from the API.
+   */
 
   useEffect(() => {
     async function fetchData() {
@@ -73,67 +58,7 @@ export default function Library() {
 
     fetchData();
   }, []);
-  // useEffect(() => {
-  //   APIKit.get('me/playlists').then(function (response) {
-  //     setPlaylist(response.data.items);
-  //     console.log("ladladlhgoaehoghadlh")
-  //     console.log(response.data.items);
-  //   });
-  //   // need to get all tracks by following 'next' given url
-  //   // APIKit.get('me/tracks').then(function (response){
-  //   //   setFavorites(response.data)
-  //   //   console.log("test 321")
-  //   //   console.log(response.data)
-      
-  //   // })
-  //   console.log("right here")
-  //   const favoriteTracks = await getAllFavoriteTracks();
-  //       setFavorites(favoriteTracks);
-  //   // this is the code snip it given by chat gpt need to figure out how to get it Integrated
-
-    
-  //   // def get_all_favorite_tracks(access_token):
-  //   // headers = {
-  //   //     "Authorization": f"Bearer {access_token}"
-  //   // }
-  //   // all_favorite_tracks = []
-
-  //   // next_url = "https://api.spotify.com/v1/me/tracks"
-  //   // while next_url:
-  //   //     response = requests.get(next_url, headers=headers)
-  //   //     if response.status_code == 200:
-  //   //         data = response.json()
-  //   //         all_favorite_tracks.extend(data["items"])
-  //   //         next_url = data["next"]  # Get the URL for the next page of results
-  //   //     else:
-  //   //         print("Error:", response.status_code)
-  //   //         return None
-
-  //   // return all_favorite_tracks
-
-
-  // }, [])
-
-  // function getAllFavoriteTracks(){
-    
-  //   let allFavoriteTracks = []
-  //   let nextUrl = "https://api.spotify.com/v1/me/tracks"
-  //   while (nextUrl){
-  //       let response = APIKit.get(nextUrl)
-  //       if (response.status_code == 200){
-  //           // not sure if this is the right function call for javaScript
-  //         allFavoriteTracks.append(response["items"]) 
-  //           nextUrl = response["next"]
-  //       }
-  //       else{
-  //           console.log("Error:", response.status_code)
-  //           return []
-  //       }
-  //   }
-  //   console.log("testing***")
-  //   console.log(allFavoriteTracks)
-  //   return allFavoriteTracks
-  // }
+  
   
   /**
    * Handles the click event on a playlist card and navigates to the player page.
