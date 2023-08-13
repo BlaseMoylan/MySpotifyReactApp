@@ -24,6 +24,8 @@ export default function Sidebar(){
             <div>
                 <SidebarButton title="Feed" to="/feed" icon={<MdSpaceDashboard/>}/>
                 <SidebarButton title="Trending" to="/trending" icon={<FaGripfire/>}/>
+                {/* maybe remove Player from the sidebar it does not need to be there and it creates a bug */}
+                {/* you do not need a link in the sidebar in order to access and play an album */}
                 <SidebarButton title="Player" to="/player" icon={<FaPlay/>}/>
                 <SidebarButton title="Favorites" to="/favorites" icon={<MdFavorite/>}/>
                 <SidebarButton title="Library" to="/library" icon={<IoLibrary/>}/>

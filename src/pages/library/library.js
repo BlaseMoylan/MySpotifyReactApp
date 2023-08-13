@@ -68,6 +68,8 @@ export default function Library() {
     navigate('/player', { state: { id: id } });
   };
 
+  // the next step is figuring out how to send down favoriteTracks to Favorites and setting up and design of Favorites
+
   return (
     <div className='page-container library-main'>
       <div className='library-body'>
