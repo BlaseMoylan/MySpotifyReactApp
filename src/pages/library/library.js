@@ -25,12 +25,14 @@ export default function Library() {
       console.log(response.data.items);
     });
     // need to get all tracks by following 'next' given url
-    APIKit.get('me/tracks').then(function (response){
-      setFavorites(response.data)
-      console.log("test 321")
-      console.log(response.data)
+    // APIKit.get('me/tracks').then(function (response){
+    //   setFavorites(response.data)
+    //   console.log("test 321")
+    //   console.log(response.data)
       
-    })
+    // })
+
+    setFavorites(getAllFavoriteTracks())
     // this is the code snip it given by chat gpt need to figure out how to get it Integrated
 
     
@@ -56,6 +58,26 @@ export default function Library() {
 
   }, [])
 
+  function getAllFavoriteTracks(){
+    
+    let allFavoriteTracks = []
+    let nextUrl = "https://api.spotify.com/v1/me/tracks"
+    while (nextUrl){
+        response = APIKit.get(nextUrl)
+        if (response.status_code == 200){
+            // not sure if this is the right function call for javaScript
+          allFavoriteTracks.extend(response["items"]) 
+            nextUrl = data["next"]
+        }
+        else{
+            print("Error:", response.status_code)
+            return None
+        }
+    }
+
+    return allFavoriteTracks
+  }
+  
   /**
    * Handles the click event on a playlist card and navigates to the player page.
    * @param {string} id - Playlist ID.
