@@ -15,8 +15,6 @@ a {
 }
 
 .btn-body.active{
-    
-    /* background-color: blueviolet; */
     color:aliceblue;
     transform: scale(1.05);
 }
