@@ -69,7 +69,7 @@ export default function Library() {
   };
 
   // the next step is figuring out how to send down favoriteTracks to Favorites and setting up and design of Favorites
-
+    // how about creating an album for the favorites and making it like the rest of the playlists
   return (
     <div className='page-container library-main'>
       <div className='library-body'>
