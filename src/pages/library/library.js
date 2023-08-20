@@ -94,10 +94,11 @@ export default function Library() {
             </div>
           </div>
         ))}
-        <div className='playlist-card fav-card' onClick={() => playPlaylist(favorites)}>
-        <IconContext.Provider value={{ size: '100%' }}>
-                <AiFillHeart className='fav-card'/>
-              </IconContext.Provider>
+        <div className='fav-card' onClick={() => playPlaylist(favorites)}>
+          <IconContext.Provider value={{ size: '75%' }}>
+                <AiFillHeart className='playlist-image'/>
+          </IconContext.Provider>
+          <p className='playlist-name'>Liked Songs</p>
 
         </div>
       </div>

@@ -13,9 +13,22 @@
 
 }
 .fav-card{
-    background-color:linear-gradient(rgba(21, 33, 141, 0.673),rgb(232, 232, 237));
-    color:rgba(240, 248, 255, 0.48) ;
+    position: relative;
+    width: 15%;
+    height: 34%;
+    border-radius: 10px;
+    background:linear-gradient(120deg,rgb(21, 33, 141, 0.673),rgba(232, 232, 237, 0.035));
+    /* background-color: blue; */
+    padding: .5%;
+    margin: 1%;
+    color:rgba(240, 248, 255, 0.606) ;
+    transition: all 0.2s ease;
+    cursor: pointer;
 }
+.fav-card:hover{
+    transform: scale(1.02);
+}
+
 .playlist-card{
     position: relative;
     width: 15%;
