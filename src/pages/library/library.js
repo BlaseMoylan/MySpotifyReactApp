@@ -70,8 +70,6 @@ export default function Library() {
     navigate('/player', { state: { id: id } });
   };
 
-  // the next step is figuring out how to send down favoriteTracks to Favorites and setting up and design of Favorites
-    // how about creating an album for the favorites and making it like the rest of the playlists
   return (
     <div className='page-container library-main'>
       <div className='library-body'>
@@ -94,6 +92,7 @@ export default function Library() {
             </div>
           </div>
         ))}
+        {/* this is working fine but the player needs to be modified or else a new one made for favAlbum */}
         <div className='fav-card' onClick={() => playPlaylist(favorites)}>
           <IconContext.Provider value={{ size: '75%' }}>
                 <AiFillHeart className='playlist-image'/>

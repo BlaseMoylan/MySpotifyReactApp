@@ -20,13 +20,13 @@ export default function Player(){
 /**
    * Fetches the playlist tracks when the component mounts or when location state changes.
    */
-
+// need to make this adaptable to favorites either that or make the fav tab into its own specialized player
     useEffect(()=>{
         if(location.state){
             apiClient
                 .get("playlists/"+location.state?.id+"/tracks")
                 .then(res=>{
-                    console.log("here")
+                    console.log("here****")
                     console.log(res.data.items)
                     setTracks(res.data.items);
                     setCurrentTrack(res.data.items[0].track)
