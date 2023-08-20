@@ -12,6 +12,10 @@
     
 
 }
+.fav-card{
+    background-color:linear-gradient(rgba(21, 33, 141, 0.673),rgb(232, 232, 237));
+    color:rgba(240, 248, 255, 0.48) ;
+}
 .playlist-card{
     position: relative;
     width: 15%;

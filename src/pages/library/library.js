@@ -5,6 +5,7 @@ import { useState, useEffect } from 'react';
 import './library.css';
 import { CgPlayButtonR } from 'react-icons/cg';
 import { IconContext } from 'react-icons';
+import {AiFillHeart} from 'react-icons/ai'
 import { useNavigate } from 'react-router-dom';
 
 /**
@@ -26,6 +27,7 @@ export default function Library() {
 
     while (nextUrl) {
       const response = await APIKit.get(nextUrl);
+      
       if (response.status === 200) {
         allFavoriteTracks.push(...response.data.items);
         nextUrl = response.data.next;
@@ -92,6 +94,12 @@ export default function Library() {
             </div>
           </div>
         ))}
+        <div className='playlist-card fav-card' onClick={() => playPlaylist(favorites)}>
+        <IconContext.Provider value={{ size: '100%' }}>
+                <AiFillHeart className='fav-card'/>
+              </IconContext.Provider>
+
+        </div>
       </div>
     </div>
   );
