@@ -20,6 +20,7 @@ export default function Player(){
 /**
    * Fetches the playlist tracks when the component mounts or when location state changes.
    */
+  
 // need to make this adaptable to favorites either that or make the fav tab into its own specialized player
     useEffect(()=>{
         if(location.state){
