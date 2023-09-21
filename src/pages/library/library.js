@@ -21,25 +21,25 @@ export default function Library() {
    */
 
   // this function actually needs to be done in the player
-  async function getAllFavoriteTracks() {
-    let allFavoriteTracks = [];
-    let nextUrl = "https://api.spotify.com/v1/me/tracks";
+  // async function getAllFavoriteTracks() {
+  //   let allFavoriteTracks = [];
+  //   let nextUrl = "https://api.spotify.com/v1/me/tracks";
 
-    while (nextUrl) {
-      const response = await APIKit.get(nextUrl);
+  //   while (nextUrl) {
+  //     const response = await APIKit.get(nextUrl);
       
-      if (response.status === 200) {
-        allFavoriteTracks.push(...response.data.items);
-        nextUrl = response.data.next;
-      } else {
-        console.log("Error:", response.status);
-        return [];
-      }
-    }
+  //     if (response.status === 200) {
+  //       allFavoriteTracks.push(...response.data.items);
+  //       nextUrl = response.data.next;
+  //     } else {
+  //       console.log("Error:", response.status);
+  //       return [];
+  //     }
+  //   }
 
-    console.log("All favorite tracks:", allFavoriteTracks);
-    return allFavoriteTracks;
-  }
+  //   console.log("All favorite tracks:", allFavoriteTracks);
+  //   return allFavoriteTracks;
+  // }
 
   /**
    * Fetches user playlists from the API.
@@ -53,8 +53,8 @@ export default function Library() {
 
         // the favoriteTracks actually need to be called in the player if the liked playlist is selected
 
-        const favoriteTracks = await getAllFavoriteTracks();
-        setFavorites(favoriteTracks);
+        // const favoriteTracks = await getAllFavoriteTracks();
+        // setFavorites(favoriteTracks);
       } catch (error) {
         console.error("Error fetching data:", error);
       }

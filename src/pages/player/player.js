@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import "./player.css"
 import { useLocation } from 'react-router-dom'
+import APIKit from '../../spotify';
 import apiClient from '../../spotify'
 import SongCard from '../../components/songCard/songCard'
 import Queue from '../../components/queue/queue'
@@ -17,27 +18,67 @@ export default function Player(){
     const [currentTrack,setCurrentTrack]=useState({})
     const [currentIndex,setCurrentIndex]=useState(0)
 
+    
+    
+    async function getAllFavoriteTracks() {
+        let allFavoriteTracks = [];
+        let nextUrl = "https://api.spotify.com/v1/me/tracks";
+    
+        while (nextUrl) {
+        const response = await APIKit.get(nextUrl);
+        
+        if (response.status === 200) {
+            allFavoriteTracks.push(...response.data.items);
+            nextUrl = response.data.next;
+        } else {
+            console.log("Error:", response.status);
+            return [];
+        }
+        }
+    
+        console.log("All favorite tracks:", allFavoriteTracks);
+        return allFavoriteTracks;
+    }
+        
+    useEffect(() => {
+        if(location.state?.id == null){
+        async function fetchData() {
+        try {
+            const favoriteTracks = await getAllFavoriteTracks();
+            setTracks(favoriteTracks);
+        } catch (error) {
+            console.error("Error fetching data:", error);
+        }
+        }
+    
+        fetchData();
+    }
+    
+    // this may cause an issue
+    }, []);
+
 /**
    * Fetches the playlist tracks when the component mounts or when location state changes.
    */
   
-// need to make this adaptable to favorites either that or make the fav tab into its own specialized player
-    useEffect(()=>{
-        if(location.state){
-            console.log("this is the state")
-            console.log(location.state)
-            console.log("this is the state.id")
-            console.log(location.state.id)
-            apiClient
-                .get("playlists/"+location.state?.id+"/tracks")
-                .then(res=>{
-                    console.log("here****")
-                    console.log(res.data.items)
-                    setTracks(res.data.items);
-                    setCurrentTrack(res.data.items[0].track)
-                })
-        }
-    },[location.state])
+
+useEffect(() => {
+            if(location.state?.id!=null){
+                console.log("this is the state")
+                console.log(location.state)
+                console.log("this is the state.id")
+                console.log(location.state.id)
+                apiClient
+                    .get("playlists/"+location.state?.id+"/tracks")
+                    .then(res=>{
+                        console.log("here****")
+                        console.log(res.data.items)
+                        setTracks(res.data.items);
+                        setCurrentTrack(res.data.items[0].track)
+                    })
+            }
+    
+},[location.state])
 
 /**
    * Updates the current track when currentIndex or tracks change.
