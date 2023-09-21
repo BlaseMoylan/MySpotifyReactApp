@@ -41,6 +41,7 @@ export default function Player(){
     }
         
     useEffect(() => {
+        // something is slowing down the process for the favsongs
         if(location.state?.id == null){
         async function fetchData() {
         try {
@@ -63,6 +64,7 @@ export default function Player(){
   
 
 useEffect(() => {
+    // need to make it so that it get all tracks not just the first 100
             if(location.state?.id!=null){
                 console.log("this is the state")
                 console.log(location.state)
