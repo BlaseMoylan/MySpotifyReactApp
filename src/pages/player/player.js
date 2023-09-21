@@ -36,7 +36,6 @@ export default function Player(){
         }
         }
     
-        console.log("All favorite tracks:", allFavoriteTracks);
         return allFavoriteTracks;
     }
         
@@ -66,15 +65,10 @@ export default function Player(){
 useEffect(() => {
     // need to make it so that it get all tracks not just the first 100
             if(location.state?.id!=null){
-                console.log("this is the state")
-                console.log(location.state)
-                console.log("this is the state.id")
-                console.log(location.state.id)
+                
                 apiClient
                     .get("playlists/"+location.state?.id+"/tracks")
                     .then(res=>{
-                        console.log("here****")
-                        console.log(res.data.items)
                         setTracks(res.data.items);
                         setCurrentTrack(res.data.items[0].track)
                     })
