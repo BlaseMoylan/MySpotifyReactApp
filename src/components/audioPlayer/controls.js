@@ -8,7 +8,7 @@ import { formToJSON } from "axios";
 export default function Controls({isPlaying,setIsPlaying,handleNext,handlePrev}){
     return(
         <IconContext.Provider value={{size:"35px",color:"#f0f8ff"}}>
-            <div className="cotrols-wrapper container">
+            <div className="controls-wraper container">
                 <div className="action-btn" onClick={handlePrev}>
                     <IoPlaySkipBack />
                 </div>
