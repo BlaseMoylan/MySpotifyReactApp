@@ -5,7 +5,6 @@ import { useState, useEffect } from 'react';
 import './library.css';
 import { CgPlayButtonR } from 'react-icons/cg';
 import { IconContext } from 'react-icons';
-import {AiFillHeart} from 'react-icons/ai'
 import { useNavigate } from 'react-router-dom';
 
 /**
@@ -13,33 +12,7 @@ import { useNavigate } from 'react-router-dom';
  */
 export default function Library() {
   const [playlist, setPlaylist] = useState(null);
-  const [favorites, setFavorites] = useState(null)
   const navigate = useNavigate();
-
-  /**
-   * Fetches user favorites from the API.
-   */
-
-  // this function actually needs to be done in the player
-  // async function getAllFavoriteTracks() {
-  //   let allFavoriteTracks = [];
-  //   let nextUrl = "https://api.spotify.com/v1/me/tracks";
-
-  //   while (nextUrl) {
-  //     const response = await APIKit.get(nextUrl);
-      
-  //     if (response.status === 200) {
-  //       allFavoriteTracks.push(...response.data.items);
-  //       nextUrl = response.data.next;
-  //     } else {
-  //       console.log("Error:", response.status);
-  //       return [];
-  //     }
-  //   }
-
-  //   console.log("All favorite tracks:", allFavoriteTracks);
-  //   return allFavoriteTracks;
-  // }
 
   /**
    * Fetches user playlists from the API.
@@ -51,10 +24,6 @@ export default function Library() {
         const response = await APIKit.get('me/playlists');
         setPlaylist(response.data.items);
 
-        // the favoriteTracks actually need to be called in the player if the liked playlist is selected
-
-        // const favoriteTracks = await getAllFavoriteTracks();
-        // setFavorites(favoriteTracks);
       } catch (error) {
         console.error("Error fetching data:", error);
       }
@@ -94,15 +63,6 @@ export default function Library() {
             </div>
           </div>
         ))}
-        {/* this is working fine but the player needs to be modified or else a new one made for favAlbum */}
-        {/* this needs to be something to tell the player that the fav has been selected */}
-        <div className='fav-card' onClick={() => playPlaylist(favorites)}>
-          <IconContext.Provider value={{ size: '75%' }}>
-                <AiFillHeart className='playlist-image'/>
-          </IconContext.Provider>
-          <p className='playlist-name'>Liked Songs</p>
-
-        </div>
       </div>
     </div>
   );
