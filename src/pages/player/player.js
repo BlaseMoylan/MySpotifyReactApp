@@ -24,6 +24,10 @@ export default function Player(){
 // need to make this adaptable to favorites either that or make the fav tab into its own specialized player
     useEffect(()=>{
         if(location.state){
+            console.log("this is the state")
+            console.log(location.state)
+            console.log("this is the state.id")
+            console.log(location.state.id)
             apiClient
                 .get("playlists/"+location.state?.id+"/tracks")
                 .then(res=>{

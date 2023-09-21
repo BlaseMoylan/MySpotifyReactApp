@@ -20,7 +20,7 @@ export default function Library() {
    * Fetches user favorites from the API.
    */
 
-  
+  // this function actually needs to be done in the player
   async function getAllFavoriteTracks() {
     let allFavoriteTracks = [];
     let nextUrl = "https://api.spotify.com/v1/me/tracks";
@@ -50,6 +50,8 @@ export default function Library() {
       try {
         const response = await APIKit.get('me/playlists');
         setPlaylist(response.data.items);
+
+        // the favoriteTracks actually need to be called in the player if the liked playlist is selected
 
         const favoriteTracks = await getAllFavoriteTracks();
         setFavorites(favoriteTracks);
@@ -93,6 +95,7 @@ export default function Library() {
           </div>
         ))}
         {/* this is working fine but the player needs to be modified or else a new one made for favAlbum */}
+        {/* this needs to be something to tell the player that the fav has been selected */}
         <div className='fav-card' onClick={() => playPlaylist(favorites)}>
           <IconContext.Provider value={{ size: '75%' }}>
                 <AiFillHeart className='playlist-image'/>
