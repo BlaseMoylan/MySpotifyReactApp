@@ -10,6 +10,7 @@ export default function Widgets({artistID}){
    
 
     useEffect(()=>{
+        // working to make these selectable and playable albums/way to see related artists and their albums which can then be played
         // Fetch related artists
         if(artistID){
             apiClient
