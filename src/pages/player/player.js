@@ -41,6 +41,7 @@ export default function Player(){
         
     useEffect(() => {
         // something is slowing down the process for the favsongs
+        // this is still a problem not sure on how to fix this
         if(location.state?.id == null){
         async function fetchData() {
         try {
@@ -54,7 +55,6 @@ export default function Player(){
         fetchData();
     }
     
-    // this may cause an issue
     }, []);
 
 /**
@@ -64,15 +64,17 @@ export default function Player(){
 
 useEffect(() => {
     // need to make it so that it get all tracks not just the first 100
-            if(location.state?.id!=null){
-                
-                apiClient
-                    .get("playlists/"+location.state?.id+"/tracks")
-                    .then(res=>{
-                        setTracks(res.data.items);
-                        setCurrentTrack(res.data.items[0].track)
-                    })
-            }
+        // I got this working for favsongs I now need to apply it to all other albums 
+            // (maybe condense this process to be done all in the same function)
+        if(location.state?.id!=null){
+            
+            apiClient
+                .get("playlists/"+location.state?.id+"/tracks")
+                .then(res=>{
+                    setTracks(res.data.items);
+                    setCurrentTrack(res.data.items[0].track)
+                })
+        }
     
 },[location.state])
 
