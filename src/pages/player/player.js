@@ -26,6 +26,7 @@ export default function Player(){
     
         while (nextUrl) {
         const response = await APIKit.get(nextUrl);
+        console.log(response)
         
         if (response.status === 200) {
             allFavoriteTracks.push(...response.data.items);

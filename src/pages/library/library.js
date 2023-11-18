@@ -40,7 +40,7 @@ export default function Library() {
   const playPlaylist = (id) => {
     navigate('/player', { state: { id: id } });
   };
-
+console.log(playlist)
   return (
     <div className='page-container library-main'>
       <div className='library-body'>
