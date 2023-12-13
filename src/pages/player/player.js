@@ -76,14 +76,14 @@ export default function Player(){
         fetchData();
     }
     
-    }, []);
+    }, [location.state]);
 
 /**
    * Fetches the playlist tracks when the component mounts or when location state changes.
    */
   
 useEffect(() => {
-    // this is the test run for the first solution to get all songs to come through
+    
     if(location.state?.id!=null){
     async function fetchData() {
     try {
@@ -98,23 +98,7 @@ useEffect(() => {
     fetchData();
 }
 
-}, [location.state]);
-
-// useEffect(() => {
-//     // need to make it so that it get all tracks not just the first 100
-//         // I got this working for favsongs I now need to apply it to all other albums 
-//             // (maybe condense this process to be done all in the same function)
-//         if(location.state?.id!=null){
-            
-//             apiClient
-//                 .get("playlists/"+location.state?.id+"/tracks")
-//                 .then(res=>{
-//                     setTracks(res.data.items);
-//                     setCurrentTrack(res.data.items[0].track)
-//                 })
-//         }
-    
-// },[location.state])
+});
 
 /**
    * Updates the current track when currentIndex or tracks change.
