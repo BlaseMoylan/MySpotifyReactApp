@@ -39,6 +39,26 @@ export default function Player(){
     
         return allFavoriteTracks;
     }
+
+    async function getAllTracks() {
+        let allTracks = [];
+        let nextUrl = "https://api.spotify.com/v1/playlists/"+location.state?.id+"/tracks";
+    
+        while (nextUrl) {
+        const response = await APIKit.get(nextUrl);
+        console.log(response)
+        
+        if (response.status === 200) {
+            allTracks.push(...response.data.items);
+            nextUrl = response.data.next;
+        } else {
+            console.log("Error:", response.status);
+            return [];
+        }
+        }
+    
+        return allTracks;
+    }
         
     useEffect(() => {
         // something is slowing down the process for the favsongs
@@ -62,22 +82,39 @@ export default function Player(){
    * Fetches the playlist tracks when the component mounts or when location state changes.
    */
   
-
 useEffect(() => {
-    // need to make it so that it get all tracks not just the first 100
-        // I got this working for favsongs I now need to apply it to all other albums 
-            // (maybe condense this process to be done all in the same function)
-        if(location.state?.id!=null){
+    // this is the test run for the first solution to get all songs to come through
+    if(location.state?.id!=null){
+    async function fetchData() {
+    try {
+        const allTracks = await getAllTracks();
+        setTracks(allTracks);
+        setCurrentTrack(allTracks[0].track)
+    } catch (error) {
+        console.error("Error fetching data:", error);
+    }
+    }
+
+    fetchData();
+}
+
+}, [location.state]);
+
+// useEffect(() => {
+//     // need to make it so that it get all tracks not just the first 100
+//         // I got this working for favsongs I now need to apply it to all other albums 
+//             // (maybe condense this process to be done all in the same function)
+//         if(location.state?.id!=null){
             
-            apiClient
-                .get("playlists/"+location.state?.id+"/tracks")
-                .then(res=>{
-                    setTracks(res.data.items);
-                    setCurrentTrack(res.data.items[0].track)
-                })
-        }
+//             apiClient
+//                 .get("playlists/"+location.state?.id+"/tracks")
+//                 .then(res=>{
+//                     setTracks(res.data.items);
+//                     setCurrentTrack(res.data.items[0].track)
+//                 })
+//         }
     
-},[location.state])
+// },[location.state])
 
 /**
    * Updates the current track when currentIndex or tracks change.
