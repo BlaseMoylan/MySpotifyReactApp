@@ -10,7 +10,10 @@ export default function WidgetCard({title,similar,featured,newRelease}){
     <div className="w-card-body">
         <p className="widget-title">{title}</p>
         {
-            // I also want to make each of the different recomended playlist clickable and playable
+            // I also want to make each of the different recommended playlist clickable and playable
+                // this is what I want to be working on next
+                // I might want to actually get similar playlist instead of artists (I have nothing set up for artists)
+                    // thus when you click on it the playlist will play right away
             similar?similar.map(artist=>(
                 <WidgetEntry 
                     title={artist?.name} 
